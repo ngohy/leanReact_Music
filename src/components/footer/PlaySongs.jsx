@@ -6,16 +6,24 @@ import 'react-h5-audio-player/lib/styles.css';
 export default class PlaySongs extends Component {
 
     render() {
-        let { itemSong } = this.props;
+        let { itemSong,handlePrevSong,handleNextSong } = this.props;
         return (
             <div>
-                <AudioPlayer className="w-100 bg-light"
+                <AudioPlayer className="bg-light" 
                     src={itemSong.url}
                     showSkipControls={true}
                     showJumpControls={false}
-                    showDownloadProgress={true}
+                    autoPlay={false}
                     volume={0.2}
                     layout="horizontal-reverse"
+                    onClickPrevious={() =>{
+                        handlePrevSong()
+                    }}
+                    onClickNext={() =>{
+                        handleNextSong()
+                    }}
+
+                    
                 />
             </div>
         )
